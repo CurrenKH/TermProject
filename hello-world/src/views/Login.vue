@@ -7,7 +7,6 @@
           <div class="card-body p-4 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
 
@@ -71,4 +70,7 @@ export default {
 }
 </script>
 
+<style>
+
+</style>
 
