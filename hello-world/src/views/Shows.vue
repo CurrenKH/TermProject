@@ -17,35 +17,20 @@
       </div>
 
           <!--ROW 4 PRODUCTS-->
-          <div class="row" >
-              <div class="col"><h3>GUNS N' ROSES</h3> <!--GNR-->
-                  <p>Vestibulum at vehicula tortor, hendrerit commodo lacus. Aenean a lacus porta, porta elit nec, ultricies ex. Nam gravida sit amet purus sed mollis. Vivamus venenatis nulla sit amet erat convallis vehicula. Morbi a tincidunt arcu. Integer euismod odio lorem, vel elementum nibh fermentum condimentum. Donec nunc risus, finibus at semper ut, cursus vel urna. Donec ac magna ut justo tempor varius sed sed quam. Suspendisse a malesuada lorem, in varius eros. Duis lectus risus, scelerisque et vulputate et, mollis eget velit. Praesent in ipsum pretium, dapibus arcu eu, bibendum dui.</p>
-                  <p><b>Category: Rock</b></p>
-                  <a class="btn" href="" role="button" id="buyButton">BUY</a>
-              </div>
-              <div class="col" id="posterImage1"></div>
-              <div class="w-100" id="divider"></div>
-              <div class="col" id="posterImage2"></div>
-              <div class="col"><h3>Alice in Chains</h3> <!--AIC-->
-                  <p>Praesent at convallis massa, ut rutrum nibh. Phasellus dapibus venenatis dictum. Pellentesque eu justo vel velit varius viverra a in ipsum. Fusce mollis nunc quis pretium accumsan. Praesent malesuada et neque id sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec auctor cursus varius. Duis ultrices quam a odio pellentesque, sed porttitor eros efficitur.Praesent at convallis massa, ut rutrum nibh. Phasellus dapibus venenatis dictum. Pellentesque eu justo vel velit varius viverra a in ipsum. Fusce mollis nunc quis pretium accumsan. Praesent malesuada et neque id sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec auctor cursus varius. Duis ultrices quam a odio pellentesque, sed porttitor eros efficitur.</p>
-                  <p><b>Category: Metal</b></p>
-                  <a class="btn" href="" role="button" id="buyButton">BUY</a>
-              </div>
-              <div class="w-100" id="divider"></div>
-              <div class="col"><h3>Linkin Park</h3> <!--LP-->
-                  <p>Vestibulum at vehicula tortor, hendrerit commodo lacus. Aenean a lacus porta, porta elit nec, ultricies ex. Nam gravida sit amet purus sed mollis. Vivamus venenatis nulla sit amet erat convallis vehicula. Morbi a tincidunt arcu. Integer euismod odio lorem, vel elementum nibh fermentum condimentum. Donec nunc risus, finibus at semper ut, cursus vel urna. Donec ac magna ut justo tempor varius sed sed quam. Suspendisse a malesuada lorem, in varius eros. Duis lectus risus, scelerisque et vulputate et, mollis eget velit. Praesent in ipsum pretium, dapibus arcu eu, bibendum dui.</p>
-                  <p><b>Category: Rock</b></p>
-                  <a class="btn" href="" role="button" id="buyButton">BUY</a>
-              </div>
-              <div class="col" id="posterImage3"></div>
-              <div class="w-100" id="divider"></div>
-              <div class="col" id="posterImage4"></div>
-              <div class="col"><h3>Green Day</h3> <!--GD-->
-                  <p>Praesent at convallis massa, ut rutrum nibh. Phasellus dapibus venenatis dictum. Pellentesque eu justo vel velit varius viverra a in ipsum. Fusce mollis nunc quis pretium accumsan. Praesent malesuada et neque id sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec auctor cursus varius. Duis ultrices quam a odio pellentesque, sed porttitor eros efficitur.Praesent at convallis massa, ut rutrum nibh. Phasellus dapibus venenatis dictum. Pellentesque eu justo vel velit varius viverra a in ipsum. Fusce mollis nunc quis pretium accumsan. Praesent malesuada et neque id sollicitudin. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec auctor cursus varius. Duis ultrices quam a odio pellentesque, sed porttitor eros efficitur.</p>
-                  <p><b>Category: Punk/Rock</b></p>
-                  <a class="btn" href="" role="button" id="buyButton">BUY</a>
-              </div>
-          </div>   
+          <table class="table">
+                <thead>
+                    <th>Show</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <tr v-for="show in shows" :key="show.id">
+                        <td>{{ show.name }}</td>
+                        <td>{{ show.category }}</td>
+                        <td>{{ show.description }}</td>
+                    </tr>
+                </tbody>
+            </table>   
   </div>
   <footer>
         <div class=container>
@@ -56,6 +41,28 @@
   </div>
   </html>
 </template>
+
+<script>
+import * as axios from 'axios'
+
+export default {
+    Name: 'Shows',
+    data() {
+        return {
+            shows:[]
+        }
+    },
+    created()
+    {
+        const headers = { "Content-Type": "application/json" };
+        axios.get('http://mywebapp-775f4.ue.r.appspot.com/shows', { headers })
+        .then(response =>{
+            console.log(response)
+        })
+        .catch()
+    }
+}
+</script>
 
 <style>
 /* eslint-disable no-mixed-spaces-and-tabs */

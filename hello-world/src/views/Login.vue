@@ -6,6 +6,10 @@
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-4 text-center">
 
+            <div class="alert alert-danger" role="alert" v-if="isHidden">
+              {{ error }}
+              </div>
+
             <div class="mb-md-5 mt-md-4 pb-5">
               <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
               <p class="text-white-50 mb-5">Please enter your login and password!</p>
@@ -20,7 +24,7 @@
                 <label class="form-label" for="typePasswordX">Password</label>
               </div>
 
-              <button @click="onClickLogin()" class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+              <button @click="onClickLogin()" class="btn btn-outline-light btn-lg px-5" type="login">Login</button>
             </div>
           </div>
         </div>
@@ -43,7 +47,9 @@ export default {
   data() {
     return {
     username: '',
-    password: ''
+    password: '',
+    error: '',
+    isHidden: false
     }
   },
   watch: {
@@ -57,14 +63,26 @@ export default {
     onClickLogin: async function() {
       //  POST
       console.log('click')
-      const response = await axios.post('https://mywebapp-775f4.ue.r.appspot.com/login',
+      const headers = { "Content-Type": "application/json" };
+      try
       {
-      username: this.username,
-      password: this.password
-    })
+            const response = await axios.post('https://mywebapp-775f4.ue.r.appspot.com/login',
+          {
+          username: this.username,
+          password: this.password
+        }, headers
+        )
+          localStorage.setItem('token', response.data.token)
+          this.data = response.data;
+          console.log('reponse: ', response)
 
-      this.data = response.data;
-      console.log('reponse: ', response)
+          //  Send to homepage after successful login
+          this.$router.push('/')
+      }
+      catch (e){
+        this.isHidden = true;
+        this.error = 'Invalid username/password.'
+      }
     }
   }
 }
