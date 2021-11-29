@@ -28,7 +28,7 @@
 
               <div class="form-outline form-white mb-4">
                 <label for="password">Password:</label>
-                <input v-model="form.confirmPassword" type="password" id="typePasswordX" class="form-control form-control-lg" :class="{'is-valid': confirmPasswordValidation, 'is-invalid': !confirmPasswordValidation}" placeholder="Confirm Password">
+                <input v-model="form.confirmPassword" type="password" id="typeConfirmPasswordX" class="form-control form-control-lg" :class="{'is-valid': confirmPasswordValidation, 'is-invalid': !confirmPasswordValidation}" placeholder="Confirm Password">
                       <div class="invalid-feedback">
                         Passwords must match.
                       </div>

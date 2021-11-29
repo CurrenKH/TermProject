@@ -22,12 +22,16 @@
                     <th>Show</th>
                     <th>Category</th>
                     <th>Description</th>
+                    <th>Image</th>
                 </thead>
                 <tbody>
-                    <tr v-for="show in shows" :key="show.id">
+                    <tr v-for="show in shows" v-bind:key="show.id">
                         <td>{{ show.name }}</td>
                         <td>{{ show.category }}</td>
                         <td>{{ show.description }}</td>
+                        <td>
+                            <img :src="show.image" alt="" width="150">
+                        </td>
                     </tr>
                 </tbody>
             </table>   
@@ -54,13 +58,34 @@ export default {
     },
     created()
     {
-        const headers = { "Content-Type": "application/json" };
-        axios.get('http://mywebapp-775f4.ue.r.appspot.com/shows', { headers })
+        //  Request token from local storage to access show data
+        const token = localStorage.getItem('token')
+
+        //  Set constant for tokens
+        const headerTokens = { "Content-Type": "application/json",
+                       "Authorization": "Bearer " + token
+            }
+
+        //  Create axios request object
+        const apiClient = axios.create({
+            baseURL: 'http://mywebapp-775f4.ue.r.appspot.com',
+            withCredentials: false,
+            headers: headerTokens
+        })
+
+        //  GET request for show data
+        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows', { headerTokens })
         .then(response =>{
             console.log(response)
+            //  Send the data to the form
+            this.shows = response.data;
         })
         .catch()
-    }
+        
+    },
+    fetchAccessToken({ commit }) {
+  commit('updateAccessToken', localStorage.getItem('accessToken'));
+}
 }
 </script>
 
