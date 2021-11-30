@@ -45,10 +45,10 @@ git pull master-->
                             <img class="d-block w-100" src="@/assets/images/front.jpg" alt="First slide" id="images">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="@/assets/images/rollingstones.jpg" alt="Second slide" id="images">
+                            <img class="d-block w-100" src="@/assets/images/front.jpg" alt="Second slide" id="images">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="@/assets/images/elo.jpg" alt="Third slide" id="images">
+                            <img class="d-block w-100" src="@/assets/images/front.jpg" alt="Third slide" id="images">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -139,7 +139,7 @@ h2
 body
 {
     text-align: center;
-    background-image:URL('images/ledzeppelin.jpg');
+    background-image:URL('images/film.jpg');
 }
 footer
 {

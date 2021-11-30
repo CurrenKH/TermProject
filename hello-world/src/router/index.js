@@ -49,9 +49,10 @@ router.beforeEach((to, from, next) => {
   console.log('to: ', to);
   console.log('from: ', from);
 
-  if (to.name == 'Cart') next({ name: 'Login' })
-  else if (to.name == 'Checkout') next({ name: 'Login' })
-  /*-else if (to.name == 'Shows') next({ name: 'Login' })*/
+  //  Guard checks if token exists, if it is null redirect user to login page
+  if (localStorage.getItem('token') === null && to.name == 'Cart') next({ name: 'Login' })
+  else if (localStorage.getItem('token') === null && to.name == 'Checkout') next({ name: 'Login' })
+  else if (localStorage.getItem('token') === null && to.name == 'Shows') next({ name: 'Login' })
 
   else next()
 })
