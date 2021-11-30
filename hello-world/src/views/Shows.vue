@@ -27,6 +27,7 @@
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image</th>
+                    <th>Info</th>
                 </thead>
                 <tbody>
                     <!--for each show that exists, display its information-->
@@ -35,8 +36,10 @@
                         <td>{{ show.category }}</td>
                         <td>{{ show.description }}</td>
                         <td>
-                            <img :src="show.image" alt="" width="150">
+                            <img :src="show.image" alt="" width="120">
                         </td>
+                        <td v-for="presentation in presentations" v-bind:key="presentation.id">
+                        Address: {{ presentation.address }} <br>Date: {{ presentation.date }} <br>Tickets left: {{ presentation.numberOfTicketsLeft }}</td>
                     </tr>
                 </tbody>
             </table>   
@@ -59,6 +62,7 @@ export default {
     data() {
         return {
             shows:[],
+            presentation: [],
             searchTitleText: '',
             searchKeywordText: '',
         }
@@ -88,7 +92,23 @@ export default {
             this.shows = response.data;
         })
         .catch()
+
+        //  GET request for show data
+        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows/{{id}}/presentations', { headerTokens })
+        .then(response =>{
+            console.log(response)
+            //  Send the data to the form
+            this.presentations = response.data;
+        })
+        .catch()
         
+    },
+    methods: {
+    logout: function() {
+      localStorage.removeItem('token')
+
+      this.$router.push('/login')
+    },
     },
     computed: {
         filteredFilms: function() {

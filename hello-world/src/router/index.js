@@ -54,6 +54,10 @@ router.beforeEach((to, from, next) => {
   else if (localStorage.getItem('token') === null && to.name == 'Checkout') next({ name: 'Login' })
   else if (localStorage.getItem('token') === null && to.name == 'Shows') next({ name: 'Login' })
 
+  else if (localStorage.getItem('token') === !null && to.name == 'Cart') next({ name: 'Cart' })
+  else if (localStorage.getItem('token') === !null && to.name == 'Checkout') next({ name: 'Checkout' })
+  else if (localStorage.getItem('token') === !null && to.name == 'Shows') next({ name: 'Shows' })
+
   else next()
 })
 
