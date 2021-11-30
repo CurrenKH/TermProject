@@ -26,14 +26,14 @@ git pull master-->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Skit Road</title>
+    <title>Skit Road Ticketmasters</title>
   </head>
     
   <body>
     <div class="container" id="bodyContainer">
         <!--HEADER-->
         <div class="col">
-            <h1>SKIT ROAD</h1><p><b>Your Source of Concert Tickets</b></p>
+            <h1>SKIT ROAD TICKETMASTERS</h1><p><b>Your Source of Tickets</b></p>
         </div>
         
         <!--CAROUSEL-->
@@ -42,7 +42,7 @@ git pull master-->
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="@/assets/images/acdc.jpg" alt="First slide" id="images">
+                            <img class="d-block w-100" src="@/assets/images/front.jpg" alt="First slide" id="images">
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="@/assets/images/rollingstones.jpg" alt="Second slide" id="images">
@@ -68,7 +68,7 @@ git pull master-->
             <div class="col">
                 <div class="b-dropdown"> <!--MUSIC/SECONDARY BUTTON-->
                     <button class="btn btn-secondary dropdown-toggle" type="button" id=secondaryDropDown data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <h2>MUSIC</h2><p>nulla porttitor massa id neque.</p>
+                        <h2>OUR GOAL</h2><p>To allow customers to buy the tickets they need!</p>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id=secondaryDropDownInfo>
                         <p>uam nulla porttitor massa id neque aliquam vestibulum morbi. Nunc vel risus commodo viverra maecenas accumsan lacus vel facilisis. Ut tortor pretium viverra suspendisse potenti nullam. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt.</p>
@@ -78,7 +78,7 @@ git pull master-->
             <div class="col">
                 <div class="dropdown"> <!--INTRO/MAIN BUTTON-->
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <h2>INTRODUCTION</h2><p>Convallis tellus id interdum velit. Bibendum ut.</p> 
+                        <h2>INTRODUCTION</h2><p>We are a ticket vendor offering many purchase choices to our visitors!</p> 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id=dropDownInfo>
                         <p> Ut tortor pretium viverra suspendisse potenti nullam. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas.</p>
@@ -88,7 +88,7 @@ git pull master-->
             <div class="col">
                 <div class="dropdown"> <!--TICKETS/SECONDARY BUTTON-->
                     <button class="btn btn-secondary dropdown-toggle" type="button" id=secondaryDropDown data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <h2>TICKETS</h2><p>Convallis tellus id interdum vel. </p> 
+                        <h2>TICKETS?</h2><p>By signing up/logging in you can purchase some today!</p> 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id=secondaryDropDownInfo>
                         <p> Ut tortor pretium viverra suspendisse potenti nullam. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas.Consequat.</p>
@@ -99,7 +99,7 @@ git pull master-->
         
         <!--ROW 3 COLUMNS-->
         <div class="row">
-            <div class="col"><h2>ABOUT US</h2><p>Ut tortor pretium viverra suspendisse potenti nullam. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas.Consequat. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas. Consequat mauris nunc congue nisi vitae.Velit laoreet id donec ultrices tincidunt arcu non sodales. Id velit ut tortor pretium viverra. Integer enim neque volutpat ac. Arcu felis bibendum ut tristique et egestas.Consequat.</p></div>
+            <div class="col"><h2>WHY PICK US?</h2><p>Our 99% customer satisfaction rating has proven our services to be reliable for any occasion when it comes to buying tickets. We work with many theaters around the area to provide our visitors the opportunity to shop for tickets online, making it fast and easy for all. Since 2015, SKT has aimed to be the best company in the business.</p></div>
             <div class="col" id="bandImage"></div>
         </div>
         </div>
@@ -109,7 +109,7 @@ git pull master-->
   </body>
     <footer>
         <div class=container>
-            <p>&copy; Skit Road Productions 2015-2021</p>
+            <p>&copy; Skit Road Ticketmasters 2015-2021</p>
             <nav id="footerNav"><a href="#top">Back to top</a> | <a href="">FAQ</a> | <a href="">Privacy Agreement</a> | <a href>Contact</a></nav>
         </div>
     </footer>
@@ -210,9 +210,9 @@ footer
 }
 #bandImage
 {
-    background-image:URL('images/pinkfloyd.jpg');
-    height:300px;
-    max-width: 500px;
+    background-image:URL('images/theater.jpg');
+    height: 500px;
+    max-width: 800px;
     margin: 10px;
     border-style: hidden;
     border-radius: 10px;

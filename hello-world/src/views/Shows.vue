@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Skit Road</title>
+    <title>Skit Road Ticketmasters</title>
   </head>
 
   <div class="container" id="bodyContainer">
@@ -15,6 +15,10 @@
       <div class="shows">
         <h1>BUY TICKETS HERE</h1>
       </div>
+
+        <!--search boxes-->
+        <input v-model="searchTitleText" type="text" class="form-control" placeholder="Title Search" aria-label="titleSearch" aria-describedby="addon-wrapping">
+        <input v-model="searchKeywordText" type="text" class="form-control mt-2" placeholder="Keyword Search" aria-label="keywordSearch" aria-describedby="addon-wrapping">
 
           <!--ROW 4 PRODUCTS-->
           <table class="table">
@@ -25,7 +29,8 @@
                     <th>Image</th>
                 </thead>
                 <tbody>
-                    <tr v-for="show in shows" v-bind:key="show.id">
+                    <!--for each show that exists, display its information-->
+                    <tr v-for="show in filteredFilms" v-bind:key="show.id">
                         <td>{{ show.name }}</td>
                         <td>{{ show.category }}</td>
                         <td>{{ show.description }}</td>
@@ -38,7 +43,7 @@
   </div>
   <footer>
         <div class=container>
-            <p>&copy; Skit Road Productions 2015-2021</p>
+            <p>&copy; Skit Road Ticketmasters 2015-2021</p>
             <nav id="footerNav"><a href="#top">Back to top</a> | <a href="">FAQ</a> | <a href="">Privacy Agreement</a> | <a href>Contact</a></nav>
         </div>
     </footer>
@@ -53,7 +58,9 @@ export default {
     Name: 'Shows',
     data() {
         return {
-            shows:[]
+            shows:[],
+            searchTitleText: '',
+            searchKeywordText: '',
         }
     },
     created()
@@ -83,10 +90,14 @@ export default {
         .catch()
         
     },
-    fetchAccessToken({ commit }) {
-  commit('updateAccessToken', localStorage.getItem('accessToken'));
-}
-}
+    computed: {
+        filteredFilms: function() {
+            //  Filters for searchboxes checking the title and keywords separately
+            return this.shows.filter(show => show.name.toLowerCase().includes(this.searchTitleText.toLowerCase()) 
+            && show.description.toLowerCase().includes(this.searchKeywordText.toLowerCase()))
+            }
+        }
+    }
 </script>
 
 <style>
@@ -108,7 +119,7 @@ h2
 body
 {
     text-align: center;
-    background-image:URL('images/ledzeppelin.jpg');
+    background-image:URL('images/film.jpg');
 }
 footer
 {
@@ -128,53 +139,6 @@ footer
 {
     background-color: bisque;
     padding: 25px;
-}
-#bandImage
-{
-    background-image:URL('images/pinkfloyd.jpg');
-    height:300px;
-    max-width: 500px;
-    margin: 10px;
-    border-style: hidden;
-    border-radius: 10px;
-}
-#posterImage1
-{
-    background-image:URL('images/gnr.jpg');
-    height:350px;
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: right;
-    margin-right: 100px;
-    margin-top: 30px;
-}
-#posterImage2
-{
-    background-image:URL('images/aliceinchains.jpg');
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: left;
-    margin-left: 100px;
-    margin-top: 30px;
-}
-#posterImage3
-{
-    background-image:URL('images/linkinpark.jpg');
-    height:350px;
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: right;
-    margin-right: 100px;
-    margin-top: 30px;
-}
-#posterImage4
-{
-    background-image:URL('images/greenday.jpg');
-    background-size: contain;
-    background-repeat:no-repeat;
-    background-position: left;
-    margin-left: 100px;
-    margin-top: 30px;
 }
 h3
 {

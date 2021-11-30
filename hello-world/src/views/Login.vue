@@ -63,15 +63,19 @@ export default {
     onClickLogin: async function() {
       //  POST
       console.log('click')
+      //  Declare headers to use in post request for token
       const headers = { "Content-Type": "application/json" };
       try
       {
+            //  axios post request to url target login
             const response = await axios.post('https://mywebapp-775f4.ue.r.appspot.com/login',
           {
+          //  associate entered user data as username and password to login
           username: this.username,
           password: this.password
         }, headers
         )
+          //  set local storage token
           localStorage.setItem('token', response.data.token)
           this.data = response.data;
           console.log('reponse: ', response)
@@ -79,6 +83,7 @@ export default {
           //  Send to homepage after successful login
           this.$router.push('/')
       }
+      //  if login is denied show error message
       catch (e){
         this.isHidden = true;
         this.error = 'Invalid username/password.'
