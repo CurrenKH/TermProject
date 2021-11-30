@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Skit Road Ticketmasters</title>
   </head>
 
@@ -21,12 +21,14 @@
         <input v-model="searchKeywordText" type="text" class="form-control mt-2" placeholder="Keyword Search" aria-label="keywordSearch" aria-describedby="addon-wrapping">
 
           <!--ROW 4 PRODUCTS-->
-          <table class="table">
+          <div class="accordions">
+          <table class="table" style="border-collapse:collapse;">
                 <thead>
                     <th>Show</th>
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image</th>
+                    <th>Info</th>
 
                 </thead>
                 <tbody>
@@ -38,10 +40,13 @@
                         <td>
                             <img :src="show.image" alt="" width="120">
                         </td>
+                        <td>
+                            <button type="button" class="btn bg-danger text-white btn-outline-white btn-lg px-3">Details</button>
+                        </td>
                     </tr>
-                    
                 </tbody>
-            </table>   
+            </table>
+            </div>
   </div>
   <footer>
         <div class=container>
@@ -64,7 +69,6 @@ export default {
             presentations: [],
             searchTitleText: '',
             searchKeywordText: '',
-            selectedShow: null,
         }
     },
     created()
@@ -100,9 +104,8 @@ export default {
 
       this.$router.push('/login')
     },
-    getPresentations: function() {
-
-
+    getPresentations: function(id) {
+        this.isHidden = false;
         //  Request token from local storage to access show data
         const token = localStorage.getItem('token')
 
@@ -119,11 +122,11 @@ export default {
         })
 
         //  GET request for show presentation data
-        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows/' + this.shows.id + '/presentations', { headerTokens })
+        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows/' + id + '/presentations', { headerTokens })
         .then(response =>{
             console.log(response)
             //  Send the data to the form
-            this.presentations = response.data;
+            this.presentations = response.data[0];
         })
         .catch()
     }
