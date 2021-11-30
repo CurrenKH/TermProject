@@ -21,7 +21,7 @@ methods: {
       localStorage.removeItem('token')
 
       //  push to homepage after
-      this.$router.push('/')
+      this.$router.push('Login')
     },
 },})
 </script>

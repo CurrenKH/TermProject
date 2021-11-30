@@ -27,20 +27,19 @@
                     <th>Category</th>
                     <th>Description</th>
                     <th>Image</th>
-                    <th>Info</th>
+
                 </thead>
                 <tbody>
                     <!--for each show that exists, display its information-->
-                    <tr v-for="show in filteredFilms" v-bind:key="show.id">
+                    <tr v-for="show in filteredFilms" @click="getPresentations(show.id)" v-bind:key="show.id">
                         <td>{{ show.name }}</td>
                         <td>{{ show.category }}</td>
                         <td>{{ show.description }}</td>
                         <td>
                             <img :src="show.image" alt="" width="120">
                         </td>
-                        <td v-for="presentation in presentations" v-bind:key="presentation.id">
-                        Address: {{ presentation.address }} <br>Date: {{ presentation.date }} <br>Tickets left: {{ presentation.numberOfTicketsLeft }}</td>
                     </tr>
+                    
                 </tbody>
             </table>   
   </div>
@@ -62,9 +61,10 @@ export default {
     data() {
         return {
             shows:[],
-            presentation: [],
+            presentations: [],
             searchTitleText: '',
             searchKeywordText: '',
+            selectedShow: null,
         }
     },
     created()
@@ -92,15 +92,6 @@ export default {
             this.shows = response.data;
         })
         .catch()
-
-        //  GET request for show data
-        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows/{{id}}/presentations', { headerTokens })
-        .then(response =>{
-            console.log(response)
-            //  Send the data to the form
-            this.presentations = response.data;
-        })
-        .catch()
         
     },
     methods: {
@@ -109,6 +100,33 @@ export default {
 
       this.$router.push('/login')
     },
+    getPresentations: function() {
+
+
+        //  Request token from local storage to access show data
+        const token = localStorage.getItem('token')
+
+        //  Set constant for tokens
+        const headerTokens = { "Content-Type": "application/json",
+                       "Authorization": "Bearer " + token
+            }
+
+        //  Create axios request object
+        const apiClient = axios.create({
+            baseURL: 'http://mywebapp-775f4.ue.r.appspot.com',
+            withCredentials: false,
+            headers: headerTokens
+        })
+
+        //  GET request for show presentation data
+        apiClient.get('http://mywebapp-775f4.ue.r.appspot.com/shows/' + this.shows.id + '/presentations', { headerTokens })
+        .then(response =>{
+            console.log(response)
+            //  Send the data to the form
+            this.presentations = response.data;
+        })
+        .catch()
+    }
     },
     computed: {
         filteredFilms: function() {
