@@ -20,7 +20,7 @@
         <input v-model="searchTitleText" type="text" class="form-control" placeholder="Title Search" aria-label="titleSearch" aria-describedby="addon-wrapping">
         <input v-model="searchKeywordText" type="text" class="form-control mt-2" placeholder="Keyword Search" aria-label="keywordSearch" aria-describedby="addon-wrapping">
 
-          <!--ROW 4 PRODUCTS-->
+          <!--ROW 4 SHOW TABLE-->
           <div class="accordions">
           <table class="table" style="border-collapse:collapse;">
                 <thead>
@@ -41,7 +41,7 @@
                             <img :src="show.image" alt="" width="120">
                         </td>
                         <td>
-                            <button type="button" class="btn bg-danger text-white btn-outline-white btn-lg px-3">Details</button>
+                            <button type="button" class="btn bg-danger text-white btn-outline-white btn-lg px-3">Add</button>
                         </td>
                     </tr>
                 </tbody>
