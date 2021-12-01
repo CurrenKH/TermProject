@@ -99,11 +99,6 @@ export default {
         
     },
     methods: {
-    logout: function() {
-      localStorage.removeItem('token')
-
-      this.$router.push('/login')
-    },
     getPresentations: function(id) {
         this.isHidden = false;
         //  Request token from local storage to access show data

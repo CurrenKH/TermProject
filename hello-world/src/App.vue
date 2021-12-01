@@ -20,7 +20,7 @@ methods: {
       //  Remove token from localstorage
       localStorage.removeItem('token')
 
-      //  push to homepage after
+      //  push to login page after
       this.$router.push('Login')
     },
 },})
