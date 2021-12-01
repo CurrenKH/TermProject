@@ -10,6 +10,7 @@ git add .
 git commit -m "message"
 git push -u origin master
 
+----------------
 
 To clone project:
 
@@ -20,17 +21,26 @@ Project page > Code > clone > copy endpoint link
 
 (Command Prompt) git clone (link)
 
+----------------
 
 To pull (Command Prompt):
 
 git pull master
 
+
 ----------------
 
 Security: Done
+
 UC1: Done
+
 UC2: 50%
+
 -GET request pulls correct data when show is clicked, just needs to display it
+
 UC3: X
+
 UC4: X
+
 UC5: X
+
