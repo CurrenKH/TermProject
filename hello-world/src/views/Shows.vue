@@ -161,9 +161,6 @@ export default {
       .catch();
   },
   methods: {
-    getPresentationByIndex({ presentations = [], index = 0 }) {
-      return presentations[index] || {};
-    },
     onClickShowtimes: function (showId) {
       this.toggleShowtime = !this.toggleShowtime;
       this.selectedShow = showId;
@@ -214,9 +211,6 @@ export default {
             .toLowerCase()
             .includes(this.searchKeywordText.toLowerCase())
       );
-    },
-    secondPresentation() {
-      return this.presentations[0] || {};
     },
   },
 };
