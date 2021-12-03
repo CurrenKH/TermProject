@@ -26,8 +26,7 @@ git pull master
 
 Security: Done
 UC1: Done
-UC2: 50%
--GET request pulls correct data when show is clicked, just needs to display it
+UC2: Done
 UC3: X
 UC4: X
 UC5: X

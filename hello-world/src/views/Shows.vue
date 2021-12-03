@@ -50,13 +50,14 @@
               <th>Category</th>
               <th>Description</th>
               <th>Image</th>
-              <th>Info</th>
+              <th>Purchase</th>
+              <th>Presentations</th>
             </thead>
             <tbody>
               <!--for each show that exists, display its information-->
               <tr
                 v-for="show in filteredFilms"
-                @click="getPresentations(show.id)"
+                @click="getPresentations(show.id), onClickShowtimes(show.id)"
                 v-bind:key="show.id"
               >
                 <td>{{ show.name }}</td>
@@ -66,16 +67,36 @@
                   <img :src="show.image" alt="" width="120" />
                 </td>
                 <td>
+                  <div v-if="toggleShowtime && selectedShow === show.id">
+                    <!-- Presentations -->
+                    Address: {{ presentations.address }} <br />
+                    Date: {{ presentations.date }} <br />
+                    Price: ${{ presentations.price }} <br />
+                    Tickets left: {{ presentations.numberOfTicketsLeft }} <br />
+                    ----------------------------------- Address: 18 Main Street,
+                    Sherbrooke QC <br />
+                    Date: {{ presentations.date }} <br />
+                    Price: $12.99 <br />
+                    Tickets left: 35 <br />
+                  </div>
+                </td>
+                <td>
                   <p>
                     <button
-                      class="btn bg-danger text-white btn-outline-white btn-md px-3"
+                      class="
+                        btn
+                        bg-danger
+                        text-white
+                        btn-outline-white btn-md
+                        px-3
+                      "
                       type="button"
                       data-toggle="collapse"
                       data-target="#collapseExample"
                       aria-expanded="false"
                       aria-controls="collapseExample"
                     >
-                      Details
+                      Buy
                     </button>
                   </p>
                 </td>
@@ -108,6 +129,8 @@ export default {
       presentations: [],
       searchTitleText: "",
       searchKeywordText: "",
+      selectedShow: "",
+      toggleShowtime: false,
     };
   },
   created() {
@@ -138,6 +161,13 @@ export default {
       .catch();
   },
   methods: {
+    getPresentationByIndex({ presentations = [], index = 0 }) {
+      return presentations[index] || {};
+    },
+    onClickShowtimes: function (showId) {
+      this.toggleShowtime = !this.toggleShowtime;
+      this.selectedShow = showId;
+    },
     getPresentations: function (id) {
       this.isHidden = false;
       //  Request token from local storage to access show data
@@ -184,6 +214,9 @@ export default {
             .toLowerCase()
             .includes(this.searchKeywordText.toLowerCase())
       );
+    },
+    secondPresentation() {
+      return this.presentations[0] || {};
     },
   },
 };
