@@ -30,13 +30,11 @@ git pull master
 
 ----------------
 
-Security: Done
+Security: Done (Curren)
 
-UC1: Done
+UC1: Done (Curren)
 
-UC2: 50%
-
--GET request pulls correct data when show is clicked, just needs to display it
+UC2: Done (Curren)
 
 UC3: X
 
